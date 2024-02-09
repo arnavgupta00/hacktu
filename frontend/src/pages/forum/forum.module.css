@@ -1,0 +1,15 @@
+.container{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.forum{
+	display: flex;
+}
+
+.image{
+	height: 10vh;
+	width: 10vw;
+}
+
