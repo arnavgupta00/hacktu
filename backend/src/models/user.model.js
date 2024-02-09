@@ -1,25 +1,32 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
-const userSchema = new mongoose.Schema({
-    email: {
-        type: String,
-        required: true,
-        unique: true
-    },
-    password: {
-        type: String,
-        require: true
-    },
-    name: {
-        type: String,
-        required: true
-    },
-    branch: {
 
+const chidSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+  },
+  courses: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Course",
     },
-    contact :{
+  ],
+});
 
-    },
-    post 
-
+ const parentSchema = new mongoose.Schema({
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  password: {
+    type: String,
+    required: true,
+  },
+  name: {
+    type: String,
+    required: true,
+  },
+  children: [chidSchema],
 });
