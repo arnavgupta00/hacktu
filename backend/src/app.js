@@ -1,14 +1,16 @@
 import express from 'express';
-
 const app = express();
-
+import Course from './models/course.model.js';
+import Quiz from './models/quiz.model.js';
+app.use(express.json());
 app.get('/',(req,res)=>{
     res.send("hello world");
 });
 
 
 
-api.get('/authentication', async (req, res) => {
+
+app.get('/authentication', async (req, res) => {
     if (req.cookies.token) {
         try {
             const verificationStatus = jwt.verify(req.cookies.token, JWTkey);
@@ -32,7 +34,7 @@ api.get('/authentication', async (req, res) => {
 
 
 
-api.post("/register/:userEmail/:userPassword/:userName", async (req, res) => {
+app.post("/register/:userEmail/:userPassword/:userName", async (req, res) => {
     const userEmail = req.params.userEmail;
     const userPassword = req.params.userPassword;
     const userName = req.params.userName;
@@ -75,7 +77,7 @@ api.post("/register/:userEmail/:userPassword/:userName", async (req, res) => {
 });
 
 
-api.post("/login/:userEmail/:userPassword", async (req, res) => {
+app.post("/login/:userEmail/:userPassword", async (req, res) => {
     const userEmail = req.params.userEmail;
     const userPassword = req.params.userPassword;
 
@@ -106,81 +108,31 @@ api.post("/login/:userEmail/:userPassword", async (req, res) => {
     }
 });
 
-api.get("/cartAdd/:itemID/:userEmail", async (req, res) => {
+
+
+app.post('/addcourses', async (req, res) => {
+    const {heading,description,owner,story} = req.body;
+
     try {
-        const userEmail = req.params.userEmail;
-        const itemID = req.params.itemID;
-        const userFind = await userCollection.findOne({ userEmail: userEmail });
-        
-        if (!userFind) {
-            return res.status(404).json({ error: 'User not found' });
-        }
-
-        const listCart = userFind.cart;
-
-        // Check if the item with the given itemID already exists in the cart
-        const existingCartItem = listCart.find(item => item.itemId === itemID);
-
-        if (existingCartItem) {
-            // If it exists, increment the quantity
-            existingCartItem.quantity += 1;
-        } else {
-            // If it doesn't exist, add a new item to the cart
-            listCart.push({ itemId: itemID, quantity: 1 });
-        }
-
-        const updatedUser = await userCollection.findOneAndUpdate(
-            { userEmail: userEmail },
-            { cart: listCart },
-            { new: true }
-        );
-
-        return res.status(200).json(updatedUser);
+        const savedCourse = new Course({heading,description,owner,story});
+        await savedCourse.save();
+        res.status(201).send(savedCourse);
     } catch (error) {
-        console.error(error);
-        return res.status(500).json({ error: 'An error occurred while updating the cart' });
+        res.status(400).send(error);
     }
 });
-
-
-api.get("/cartRemove/:itemID/:userEmail", async (req, res) => {
-    try {
-        const userEmail = req.params.userEmail;
-        const itemID = req.params.itemID;
-        const userFind = await userCollection.findOne({ userEmail: userEmail });
-
-        if (!userFind) {
-            return res.status(404).json({ error: 'User not found' });
-        }
-
-        const listCart = userFind.cart;
-
-        const existingCartItem = listCart.find(item => item.itemId === itemID);
-
-        if (!existingCartItem) {
-            return res.status(404).json({ error: 'Item not found in the cart' });
-        }
-
-        if (existingCartItem.quantity > 1) {
-            existingCartItem.quantity -= 1;
-        } else {
-            // If quantity is 1, remove the item from the cart
-            listCart.splice(listCart.indexOf(existingCartItem), 1);
-        }
-
-        // Update the user's cart with the modified list
-        const updatedUser = await userCollection.findOneAndUpdate(
-            { userEmail: userEmail },
-            { cart: listCart },
-            { new: true }
-        );
-
-        return res.status(200).json(updatedUser);
-    } catch (error) {
-        console.error(error);
-        return res.status(500).json({ error: 'An error occurred while updating the cart' });
-    }
-});
-
  
+app.post('/addquizzes', async (req, res) => {
+    const { title, description, questions } = req.body;
+
+    try {
+        const newQuiz = new Quiz({ title, description, questions });
+        await newQuiz.save();
+        res.status(201).send(newQuiz);
+    } catch (error) {
+        res.status(400).send(error);
+    }
+});
+
+
 export { app };
