@@ -16,6 +16,7 @@ function App() {
       <Route path="/quiz" element={<Quiz />} />
         <Route path="/parent" element={<ParentHome />} /> 
         <Route path="/forum" element={<Forum />} />
+        
         <Route path="/login" element={<Login />} /> 
         <Route path="/signup" element={<SignUp />} /> 
       </Routes>
