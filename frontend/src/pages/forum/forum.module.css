@@ -4,12 +4,45 @@
 	justify-content: space-between;
 }
 
-.forum{
-	display: flex;
-}
 
 .image{
-	height: 10vh;
-	width: 10vw;
+	align-self: center;
 }
 
+.post{
+	display: flex;
+	justify-content: center;
+}
+
+.search{
+	display: flex;
+	align-items: flex-start;
+}
+
+.searchbar{
+	background-color: #FAE269;
+	width:30%;
+	height: 7vh;
+	/* border-radius: 20%; */
+	margin-bottom: clamp(0.5rem, 2vw , 1rem);	
+}
+
+.ending{
+	display: flex;
+	justify-content: space-between;
+	background-color: #FAE269;
+	width: 80%;
+	height: 10vh;
+	/* border-radius: 5%; */
+	margin: 0 auto;
+	margin-top: clamp(5.5rem, 12vw , 6rem);
+}
+
+.ending h3{
+	align-self: center;
+	margin-left: clamp(0.5rem, 2vw , 1rem);
+}
+
+.ending>img{
+	height: 20px;
+}
