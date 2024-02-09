@@ -1,0 +1,6 @@
+.container{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	margin-top: clamp(0.5rem, 2vh, 1rem);
+}
