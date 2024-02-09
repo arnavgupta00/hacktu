@@ -1,17 +1,24 @@
 import express from 'express';
+import cors from 'cors'; // Import the cors middleware
 const app = express();
 import Course from './models/course.model.js';
 import Quiz from './models/quiz.model.js';
 import Post from './models/post.model.js';
 app.use(express.json());
+
+// Use cors middleware with specific origin
+app.use(cors({
+    origin: 'http://localhost:5173/ '
+}));
+
 app.get('/',(req,res)=>{
-    res.send("hello world");
+        res.send("hello world");
 });
 
 
 
 
-app.get('/authentication', async (req, res) => {
+app.get('/api/authentication', async (req, res) => {
     if (req.cookies.token) {
         try {
             const verificationStatus = jwt.verify(req.cookies.token, JWTkey);
@@ -35,7 +42,7 @@ app.get('/authentication', async (req, res) => {
 
 
 
-app.post("/register/:userEmail/:userPassword/:userName", async (req, res) => {
+app.post("/api/register/:userEmail/:userPassword/:userName", async (req, res) => {
     const userEmail = req.params.userEmail;
     const userPassword = req.params.userPassword;
     const userName = req.params.userName;
@@ -78,7 +85,7 @@ app.post("/register/:userEmail/:userPassword/:userName", async (req, res) => {
 });
 
 
-app.post("/login/:userEmail/:userPassword", async (req, res) => {
+app.post("/api/login/:userEmail/:userPassword", async (req, res) => {
     const userEmail = req.params.userEmail;
     const userPassword = req.params.userPassword;
 
@@ -111,7 +118,7 @@ app.post("/login/:userEmail/:userPassword", async (req, res) => {
 
 
 
-app.post('/addcourses', async (req, res) => {
+app.post('/api/addcourses', async (req, res) => {
     const {heading,description,owner,story} = req.body;
 
     try {
@@ -123,7 +130,7 @@ app.post('/addcourses', async (req, res) => {
     }
 });
  
-app.post('/addquizzes', async (req, res) => {
+app.post('/api/addquizzes', async (req, res) => {
     const { title, description, questions } = req.body;
 
     try {
@@ -135,7 +142,7 @@ app.post('/addquizzes', async (req, res) => {
     }
 });
 
-app.post('/addpost', async (req, res) => {
+app.post('/api/addpost', async (req, res) => {
     const { title, content } = req.body;
     try {
         const newPost = new Post({ title, content });
@@ -145,6 +152,16 @@ app.post('/addpost', async (req, res) => {
         res.status(400).send(error);
     }
 });
+
+app.get('/api/posts', async (req, res) => {
+  try {
+    const posts = await Post.find();
+    res.status(200).send(posts);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
 
 
 export { app };
