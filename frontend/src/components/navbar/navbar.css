@@ -1,0 +1,69 @@
+.mobileNavbar{
+    width: 100vw;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(251,245,236);
+
+}
+.mobileNavbarItems{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(251,245,236);
+    padding: 0 20px;
+}
+.mobileNavbarItem{
+    background-color: rgb(201,196,189);
+    
+    border-radius: 25px;
+    height: 25px;
+    width: 30%;
+    padding: 10px;
+    padding-bottom: 20px;
+    border-color: transparent;
+    text-align: center ;
+    margin-right: 10px;
+}
+.mobileNavbarItem:hover{
+    background-color: rgb(201,196,189);
+    border-color: transparent;
+    opacity: 0.8;
+}
+.mobileNavbarItem:hover{
+    background-color: rgb(201,196,189);
+    border-color: transparent;
+    opacity: 0.3;
+}
+.navbar{
+    width: 15vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(251,245,236);
+}
+.navbarItems{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 90%;
+    padding: 20px 0;
+    padding-top: 150px;
+    padding-bottom: 150px;
+    background-color: rgb(251,245,236);
+}
+.navbarItem{
+    background-color: rgb(201,196,189);
+    border-radius: 25px;
+    height: 35px;
+    width: 150px;    
+    text-align: center;
+    padding-top: 10px;
+    border: solid 1px rgb(201,196,189);
+}

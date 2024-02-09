@@ -1,6 +1,6 @@
 var obj = {
-    userName,
-    isAuthenticated
+    userName:String,
+    isAuthenticated:Boolean
 }
 
 export function storeObject(name, isAuthenticated) {
@@ -28,16 +28,16 @@ export var AuthenticationFunk = async () => {
             const fullReturn = await response.json();
             result = fullReturn.verificationStatus;
             userInfo = fullReturn.userInfo;
-            authenticationCall = true;
-            return authenticationCall
+            storeObject(formData.userName, true);
+            return true
         } else {
             console.error("Failed to make request:", response.statusText);
-            authenticationCall = false;
-            return authenticationCall
+            storeObject(formData.userName, false);
+            return false
         }
     } catch (error) {
         console.error("Failed to make request:", error);
-        authenticationCall = false;
-        return authenticationCall
+        storeObject(formData.userName, false);
+        return false
     }
 }
