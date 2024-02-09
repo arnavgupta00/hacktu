@@ -3,7 +3,6 @@ import Logo from '../../assets/Logo.png';
 import styles from './forum.module.css';
 
 const Forum = () => {
-	const [posts, setPosts] = useState([]);
 	return (
 		<Fragment>
 			<div className={styles.container}>
