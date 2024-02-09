@@ -2,6 +2,7 @@ import express from 'express';
 const app = express();
 import Course from './models/course.model.js';
 import Quiz from './models/quiz.model.js';
+import Post from './models/post.model.js';
 app.use(express.json());
 app.get('/',(req,res)=>{
     res.send("hello world");
@@ -129,6 +130,17 @@ app.post('/addquizzes', async (req, res) => {
         const newQuiz = new Quiz({ title, description, questions });
         await newQuiz.save();
         res.status(201).send(newQuiz);
+    } catch (error) {
+        res.status(400).send(error);
+    }
+});
+
+app.post('/addpost', async (req, res) => {
+    const { title, content } = req.body;
+    try {
+        const newPost = new Post({ title, content });
+        await newPost.save();
+        res.status(201).send(newPost);
     } catch (error) {
         res.status(400).send(error);
     }
