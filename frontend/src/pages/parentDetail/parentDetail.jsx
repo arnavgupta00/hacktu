@@ -18,7 +18,7 @@ const ParentDetail = () => {
 						<input className={styles.input} type='text' placeholder="Father's name" />
 					</div>
 					<div className={styles.formGroup}>
-						<input className={styles.input} type='text' placeholder="Father's DOB (DD/MM/YYYY)" />
+						<input className={styles.input} type="date" placeholder="Father's DOB (DD/MM/YYYY)" />
 					</div>
 					<div className={styles.formGroup}>
 						<input className={styles.input} type='text' placeholder="Father's Occupation" />
@@ -27,13 +27,13 @@ const ParentDetail = () => {
 						<input className={styles.input} type='text' placeholder="Mother's Name" />
 					</div>
 					<div className={styles.formGroup}>
-						<input className={styles.input} type='text' placeholder="Mother's DOB (DD/MM/YYYY)" />
+					<input className={styles.input} type="date" placeholder="Mother's DOB (DD/MM/YYYY)" />
 					</div>
 					<div className={styles.formGroup}>
 						<input className={styles.input} type='text' placeholder="Mother's Occupation" />
 					</div>
 					<div className={styles.formGroup}>
-						<input className={styles.input} type='text' placeholder="City" />
+						<input className={styles.input} type='search' placeholder="City" />
 					</div>
 					<div className={styles.formGroup}>
 						<button className={styles.input} type="submit">Submit</button>
