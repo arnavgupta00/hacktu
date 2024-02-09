@@ -1,0 +1,18 @@
+.container{
+	width:90%;
+	height: fit-content; 
+	margin: 20px auto;
+	border-radius: 15px;
+	border: solid #e9e7e2;
+	align-items: center;
+	padding: 20px;
+}
+.container div p{
+	/* margin-left: 10px; */
+	font-size: clamp(1rem,2vw,1.5rem);
+	margin-bottom: 10px;
+}
+
+.container div:nth-child(2){
+	color: rgba(33, 33, 33, 0.696);
+}
