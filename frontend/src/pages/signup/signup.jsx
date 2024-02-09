@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Cookies from "js-cookie";
+import Logo from '../../assets/Logo.png';
+
+import "../login/login.css";
 
 export const SignUp = () => {
   const [formData, setFormData] = useState({
@@ -57,9 +60,17 @@ export const SignUp = () => {
 
   return (
     <>
-      <div>
-        <form onSubmit={handleSubmit}>
+      <div className="loginPage">
+        <div className="loginPageBackground"></div>
+        <form onSubmit={handleSubmit} className="loginPageForm">
+          <div className="loginPageLogo">
+            <img src={Logo} alt="logo" />
+          </div>
+          <div className="loginPageHeading">
+            <h1>Sign Up</h1>
+          </div>
           <input
+            className="loginPageFormInput"
             type="text"
             placeholder="Username"
             name="userName"
@@ -67,6 +78,7 @@ export const SignUp = () => {
             onChange={signSearchHandle}
           />
           <input
+            className="loginPageFormInput"
             type="text"
             placeholder="Email"
             name="userEmail"
@@ -74,14 +86,22 @@ export const SignUp = () => {
             onChange={signSearchHandle}
           />
           <input
+            className="loginPageFormInput"
             type="password"
             name="userPassword"
             placeholder="Password"
             value={formData.userPassword}
             onChange={signSearchHandle}
           />
-          <button type="submit">Login</button>
+          <button type="submit" className="loginPageFormButton">
+            Sign Up
+          </button>
+          <div className="changeModes">
+          <p>Already have an account?<a href="/login">Login</a></p>
+          
+        </div>
         </form>
+        
       </div>
     </>
   );

@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import Logo from '../../assets/logo.png';
+import Logo from '../../assets/Logo.png';
 import styles from './forum.module.css';
 
 const Forum = () => {
