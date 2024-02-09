@@ -1,9 +1,16 @@
+
+import React, { Fragment } from "react";
+import Logo from '../../assets/logo.png';
+import styles from './forum.module.css';
+import Post from './post/post.jsx';
+// import Glass from '../../assets/glass.png';
 import React, { Fragment, useEffect,useState } from "react";
 import Logo from '../../assets/Logo.png';
 import styles from './forum.module.css';
 import Post from './post/post.jsx';
 import axios from 'axios';
 import Glass from '../../assets/glass.png';
+
 // import Search from '../../assets/magnifying-glass.png';
 
 const Forum = () => {
