@@ -1,15 +1,15 @@
 import React from "react";
 import styles from './post.module.css';
 
-const Post = (props) => {
+const Post = ({props}) => {
 	
 	return (
 		<div className={styles.container}>
 			<div>
-				<h1>{props.heading}</h1>
+				<p>{props.title}</p>
 			</div>
 			<div>
-				<p>{props.data}</p>
+				<p>{props.content}</p>
 			</div>
 		</div>
   )
