@@ -1,0 +1,30 @@
+.container{
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	height: 100vh;
+}
+
+.background{
+	background-color: black;
+	display: flex;
+	width: 50%;
+}
+
+.heading{
+	width: 100%;
+	align-self: center;
+	display: flex;
+	justify-content: space-between;
+}
+
+.heading>img{
+	width: 6vw;
+}
+
+.container1{
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	width: 45%;
+}
