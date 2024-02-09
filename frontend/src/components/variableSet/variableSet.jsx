@@ -1,6 +1,6 @@
 var obj = {
-    userName,
-    isAuthenticated
+    userName:String,
+    isAuthenticated:Boolean
 }
 
 export function storeObject(name, isAuthenticated) {

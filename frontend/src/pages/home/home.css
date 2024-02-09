@@ -1,0 +1,120 @@
+.homePage{
+    width: 100vw;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; 
+    
+}
+.headingCumLogo {
+  width: 100%;
+  height: 75px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  
+  
+}
+.headingCumLogoLogo {
+  width: 50%;
+  height: 100%;
+  text-align: start;
+  align-self: flex-start;
+}
+.headingCumLogoHeading {
+  width: 50%;
+  height: 100%;
+  text-align: end;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 0.8rem;
+  align-self: flex-end;
+  color: rgb(69, 68, 68);
+}
+
+.mainBanner{
+    width: 100%;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.mainBannerHeading{
+    font-size: 0.5rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: rgb(69, 68, 68);
+    margin-bottom: 20px;
+    height: fit-content  ;
+    align-self: start;
+}
+.mainBannerImage{
+    width: 100%;
+    height: 250px;
+    background-color: rgb(69, 68, 68);
+    border-radius: 20px;
+}
+.homeCorusel{
+    width: 100%;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+.homeCoruselHeading{
+    font-size: 0.5rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: rgb(69, 68, 68);
+    margin-bottom: 20px;
+    height: fit-content  ;
+    align-self: start;
+
+}
+.homeCoruselCaruuu{
+    width: 100%;
+    height: 250px;
+    background-color: rgb(69, 68, 68);
+    border-radius: 20px;
+}
+
+.quizzes{
+    width: 100%;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+.quizzesHeading{
+    font-size: 0.5rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: rgb(69, 68, 68);
+    margin-bottom: 20px;
+    height: fit-content  ;
+    align-self: start;
+    margin-top: 100px;
+}
+.quizzesItems{
+    width: 100%;
+    height: fit-content;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    
+}
+
+.quizzesItem{
+    width: 45%; 
+    height: 170px;
+    gap: 10px;
+    border-radius: 30px;
+    background-color : rgb(69, 68, 68);
+}
