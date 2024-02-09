@@ -52,7 +52,7 @@ export const SignUp = () => {
         storeObject(formData.userName, true);
         console.log("success")
         //await AuthenticationFunk();
-        //navigate("/home");
+        navigate("/home");
       } else {
         console.error("Failed to make request:", response.statusText);
         storeObject(formData.userName, false);

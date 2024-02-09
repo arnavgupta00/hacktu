@@ -20,10 +20,11 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/parent" element={<ParentHome />} />
         <Route path="/forum" element={<Forum />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/quiz" element={<Home />} />
         <Route path="/home" element={<Home />} />
       </Routes>
     </>
