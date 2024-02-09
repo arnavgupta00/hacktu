@@ -5,6 +5,7 @@ import Logo from '../../assets/Logo.png';
 import "../login/login.css";
 
 export const SignUp = () => {
+  const url = process.env.REACT_APP_API_URL;
   const [formData, setFormData] = useState({
     userName: "",
     userEmail: "",

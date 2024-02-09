@@ -1,10 +1,18 @@
 import React, { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import Logo from '../../assets/Logo.png';
-
+import {
+  storeObject,
+  exportObject,
+} from "../../components/variableSet/variableSet.jsx";
+import "np";
 import "./login.css";
+import "dotenv/config";
 
 export const Login = () => {
+
+  const url = process.env.REACT_APP_API_URL;
+
   const [formData, setFormData] = useState({
     userName: "",
     userEmail: "",
@@ -33,7 +41,7 @@ export const Login = () => {
       if (response.ok) {
         const result = await response.json();
         Cookies.set("token", result.message, { expires: 7 });
-        setauthenticationCall(true);
+        storeObject(formData.userName, true);
         await AuthenticationFunk();
         navigate("/");
       } else {

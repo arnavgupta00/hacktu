@@ -4,6 +4,13 @@
   --font: 'Poppins', sans-serif;
   font-family: var(--font);
 }
+#root{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: fit-content;
+  padding-top: 50px;
+}
 
 * {
   margin: 0%;

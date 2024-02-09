@@ -44,7 +44,6 @@ export const Home = () => {
             />
           </div>
         </div>
-
         <div className="quizzes">
             <div className="quizzesHeading">
                 <h1>Quizzes</h1>
