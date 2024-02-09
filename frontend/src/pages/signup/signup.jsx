@@ -1,11 +1,19 @@
+
+
 import React, { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import Logo from '../../assets/Logo.png';
+import { Link, useNavigate } from 'react-router-dom';
 
+import {
+  storeObject,
+  exportObject,
+  AuthenticationFunk
+} from "../../components/variableSet/variableSet.jsx";
 import "../login/login.css";
 
 export const SignUp = () => {
-  const url = process.env.REACT_APP_API_URL;
+  const url = "http://localhost:5000";
   const [formData, setFormData] = useState({
     userName: "",
     userEmail: "",
@@ -18,6 +26,7 @@ export const SignUp = () => {
   };
 
   var signSubmit = async (event) => {
+    const navigate = useNavigate();
     event.preventDefault();
 
     try {
@@ -40,16 +49,17 @@ export const SignUp = () => {
       if (response.ok) {
         const result = await response.json();
         Cookies.set("token", result.message, { expires: 7 });
-        setauthenticationCall(true);
-        await AuthenticationFunk();
-        navigate("/");
+        storeObject(formData.userName, true);
+        console.log("success")
+        //await AuthenticationFunk();
+        //navigate("/home");
       } else {
         console.error("Failed to make request:", response.statusText);
-        setauthenticationCall(false);
+        storeObject(formData.userName, false);
       }
     } catch (error) {
       console.error("Failed to make request:", error);
-      setauthenticationCall(false);
+      storeObject(formData.userName, false);
     }
   };
 

@@ -1,17 +1,24 @@
+
+
 import React, { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import Logo from '../../assets/Logo.png';
+import { Link, useNavigate } from 'react-router-dom';
+
 import {
   storeObject,
   exportObject,
+  AuthenticationFunk
 } from "../../components/variableSet/variableSet.jsx";
-import "np";
+
 import "./login.css";
-import "dotenv/config";
+
 
 export const Login = () => {
 
-  const url = process.env.REACT_APP_API_URL;
+  const navigate = useNavigate();
+
+  const url = "http://localhost:5000";
 
   const [formData, setFormData] = useState({
     userName: "",
@@ -42,15 +49,16 @@ export const Login = () => {
         const result = await response.json();
         Cookies.set("token", result.message, { expires: 7 });
         storeObject(formData.userName, true);
-        await AuthenticationFunk();
-        navigate("/");
+        console.log("success")
+        //await AuthenticationFunk();
+        navigate("/home");
       } else {
         console.error("Failed to make request:", response.statusText);
-        setauthenticationCall(false);
+        storeObject(formData.userName, false);
       }
     } catch (error) {
       console.error("Failed to make request:", error);
-      setauthenticationCall(false);
+      storeObject(formData.userName, false);  
     }
   };
 
@@ -90,7 +98,7 @@ export const Login = () => {
           <input
             className="loginPageFormInput"
             type="password"
-            name="use"
+            name="userPassword"
             placeholder="Password"
             value={formData.userPassword}
             onChange={signSearchHandle}
