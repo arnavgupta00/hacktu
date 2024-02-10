@@ -1,10 +1,25 @@
+
+
 import React, { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import Logo from '../../assets/Logo.png';
+import { Link, useNavigate } from 'react-router-dom';
+
+import {
+  storeObject,
+  exportObject,
+  AuthenticationFunk
+} from "../../components/variableSet/variableSet.jsx";
 
 import "./login.css";
 
+
 export const Login = () => {
+
+  const navigate = useNavigate();
+
+  const url = "http://localhost:5000";
+
   const [formData, setFormData] = useState({
     userName: "",
     userEmail: "",
@@ -33,16 +48,17 @@ export const Login = () => {
       if (response.ok) {
         const result = await response.json();
         Cookies.set("token", result.message, { expires: 7 });
-        setauthenticationCall(true);
-        await AuthenticationFunk();
-        navigate("/");
+        storeObject(formData.userName, true);
+        console.log("success")
+        //await AuthenticationFunk();
+        navigate("/home");
       } else {
         console.error("Failed to make request:", response.statusText);
-        setauthenticationCall(false);
+        storeObject(formData.userName, false);
       }
     } catch (error) {
       console.error("Failed to make request:", error);
-      setauthenticationCall(false);
+      storeObject(formData.userName, false);  
     }
   };
 
@@ -82,7 +98,7 @@ export const Login = () => {
           <input
             className="loginPageFormInput"
             type="password"
-            name="use"
+            name="userPassword"
             placeholder="Password"
             value={formData.userPassword}
             onChange={signSearchHandle}
